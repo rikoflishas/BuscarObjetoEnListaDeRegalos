@@ -10,45 +10,32 @@ Este proyecto se enfoca únicamente en usar recursión para buscar un elemento e
  simple.
  */
 
- // Copy code
 // Lista de regalos
 const gifts = ["Muñeca", "Carro de juguete", "Rompecabezas", "Lego", "Pelota", "Melodica", "Piano de Juguete","Bicicleta", 
     "Patin del Diablo", "Patines", "Juego de Mesa", "Pistola de Juguete", "Figura de Accion", "Padelbol"];
 
+let giftToFind = "Camionsito";
+let index = 0;
+
+findGift(gifts, giftToFind, index);
 // TODO: Completa esta función para que busque recursivamente el regalo en la lista
 function findGift(gifts, giftName, index = 0) 
 {
+        // Caso base: Si llegamos al final de la lista
+        if(index >= gifts.length){
+            console.log(`El regalo, ${giftName}, no está en la lista`);
+            return; //return explicito importante
+        }
+
         if(gifts[index] === giftName){
             console.log(`El regalo, ${giftName}, se encuentra en esta posición ${index + 1}`);
+            return;// return explicito importante
         }
         
-        // Caso base: Si llegamos al final de la lista
-        if (gifts[index] != giftName) {
-            if(index > gifts.length){
-                console.log(`${giftName} no está en la lista.`);
-                return -1;
-            }else{
-                index += 1;
-                findGift(gifts, giftName, index);//De aqui se vuelve a llamar, haciendo uso de la RECURSIVIDAD
-            }
-        }
   // TODO: Incluye el caso base donde se llega al final de la lista.
   // TODO: Incluye el caso base donde se encuentra el regalo.
   // TODO: Realiza la llamada recursiva para seguir buscando el regalo.
+
+  findGift(gifts, giftToFind, index + 1);
+  return;// return explicito para asegurarnos el fin de la funcion. 
 }
-
-// Casos de ejemplo:
-// Llama a la función con los datos de entrada y muestra el resultado en la consola.
-// Llama a la función y prueba con diferentes regalos
-let giftToFind = "Camión";
-findGift(gifts, giftToFind)
-
-
-//--------------------------------------------------------------------------
-// Caso cuando el regalo no está en la lista
-//giftToFind = "Camión";
-// Salida esperada:
-// "Camión no está en la lista."
-// Salida esperada:
-// "Lego está en la posición 3."
-
